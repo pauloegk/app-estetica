@@ -7,6 +7,11 @@ class ProceduresSchema extends Schema {
   up () {
     this.create('procedures', (table) => {
       table.increments()
+      table.integer('category_id').unsigned().references('id').inTable('categories')
+      table.string('name', 80).notNullable()
+      table.string('time', 80).notNullable()
+      table.decimal('value').notNullable()
+      table.string('description', 255).notNullable()
       table.timestamps()
     })
   }
