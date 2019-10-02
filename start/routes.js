@@ -25,9 +25,7 @@ Route.group(() => {
   Route.get('categories/:id/procedures', 'ProcedureController.getAll');
   Route.post('categories/:id/procedures', 'ProcedureController.create');
 
-})
-  .middleware(["guest"])
-  .prefix("api/v1");
+}).middleware(["guest"]).prefix('api');
 
 // Route.group(() => {
 //   Route.get("users/:id", "UserController.show");

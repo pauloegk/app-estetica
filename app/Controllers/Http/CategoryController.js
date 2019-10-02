@@ -1,17 +1,12 @@
 "use strict";
 
+/** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
 const Category = use("App/Models/Category");
 
 class CategoryController {
-  async create() {
-    const data = request.only(["name"]);
-
-    const category = new Category();
-    category.name = data.name;
-
-    console.log(category);
-
-    await category.save();
+  async create({ request, response }) {
+    const category = await Category.create(request.only(["name"]));
+    return response.created(category);
   }
 
   async getAll() {
